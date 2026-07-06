@@ -1,0 +1,54 @@
+{{ $heroImg := resources.Get "img/hero-background.jpg" }}
+<section class="hero{{ if not $heroImg }} hero--placeholder{{ end }}">
+  {{ with $heroImg }}
+    <img class="hero__image" src="{{ .RelPermalink }}" alt="" />
+  {{ end }}
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <h1 class="hero__title">{{ .Title | default site.Title | emojify }}</h1>
+
+    {{ with .Params.eventDate }}
+      <p class="hero__date">{{ partial "functions/date.html" . }}</p>
+
+      <div
+        class="hero__countdown"
+        id="countdown"
+        data-event-date="{{ .Format "2006-01-02T15:04:05Z07:00" }}"
+        aria-live="polite"
+      >
+        <div class="hero__countdown-unit">
+          <span class="hero__countdown-value" data-unit="days">00</span>
+          <span class="hero__countdown-label">Tage</span>
+        </div>
+        <div class="hero__countdown-unit">
+          <span class="hero__countdown-value" data-unit="hours">00</span>
+          <span class="hero__countdown-label">Stunden</span>
+        </div>
+        <div class="hero__countdown-unit">
+          <span class="hero__countdown-value" data-unit="minutes">00</span>
+          <span class="hero__countdown-label">Minuten</span>
+        </div>
+        <div class="hero__countdown-unit">
+          <span class="hero__countdown-value" data-unit="seconds">00</span>
+          <span class="hero__countdown-label">Sekunden</span>
+        </div>
+      </div>
+    {{ end }}
+
+    <a href="#inhalt" class="hero__cta">Mehr erfahren</a>
+  </div>
+</section>
+
+{{ $countdownJS := resources.Get "js/countdown.js" | resources.Minify | resources.Fingerprint "sha256" }}
+<script defer src="{{ $countdownJS.RelPermalink }}" integrity="{{ $countdownJS.Data.Integrity }}"></script>
+
+<div id="inhalt">
+  <article class="prose max-w-full dark:prose-invert">
+    {{ .Content | emojify }}
+  </article>
+  {{ if .Site.Params.homepage.showRecent }}
+    <section>
+      {{ partial "recent-articles.html" . }}
+    </section>
+  {{ end }}
+</div>

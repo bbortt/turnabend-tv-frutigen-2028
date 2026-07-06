@@ -1,0 +1,44 @@
+# -- Theme Options --
+# See https://jpanther.github.io/congo/docs/configuration/#theme-parameters
+
+colorScheme = "turnfescht" # custom scheme, see assets/css/schemes/turnfescht.css
+defaultAppearance = "light"
+autoSwitchAppearance = false
+
+enableSearch = false
+enableCodeCopy = false
+enableImageLazyLoading = true
+enableImageWebp = true
+enableQuicklink = true
+
+fingerprintAlgorithm = "sha256"
+
+[header]
+  layout = "basic"
+  showTitle = true
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = false
+  showScrollToTop = true
+
+[homepage]
+  layout = "custom" # custom hero, see layouts/_partials/home/custom.html
+  showRecent = false
+
+[article]
+  showDate = false
+  showAuthor = false
+  showBreadcrumbs = true
+  showReadingTime = false
+  showTableOfContents = false
+  showWordCount = false
+
+[list]
+  showBreadcrumbs = true
+  showSummary = false
+  showTableOfContents = false
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]

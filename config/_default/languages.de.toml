@@ -1,0 +1,18 @@
+# -- Language Configuration --
+# See https://jpanther.github.io/congo/docs/configuration/#language-and-i18n
+#
+# `locale` sets the actual HTML lang / date-formatting locale (Swiss German).
+# The filename suffix ("de") is Hugo's internal language key and must match
+# `defaultContentLanguage` in hugo.toml plus the menus.de.toml filename.
+
+locale = "de-CH"
+label = "Deutsch (Schweiz)"
+direction = "ltr"
+weight = 1
+
+title = "Turnabend TV Frutigen 2028"
+# copyright left unset: Congo auto-generates "© <year> <title>"
+
+[params]
+  dateFormat = "2. January 2006"
+  # description: TODO — ask Timon for the exact meta description copy

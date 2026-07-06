@@ -1,0 +1,147 @@
+/* Brand tokens from specs/design-system.md — binding for this project.
+   Loaded after Congo's theme styles, so these rules take precedence. */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap");
+
+:root {
+  --color-green: #034001;
+  --color-green-contrast: #ffffff;
+
+  --color-anthracite: #252624;
+  --color-anthracite-contrast: #ffffff;
+
+  --color-yellow: #f2e205;
+  --color-yellow-contrast: #252624;
+  --color-orange: #f2a444;
+  --color-orange-contrast: #252624;
+
+  --color-black: #0d0d0d;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f7f7f6;
+  --color-border: #e8e8e6;
+
+  --font-heading: "Montserrat", Arial, sans-serif;
+  --font-body: "Open Sans", Arial, sans-serif;
+}
+
+html {
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* -- Homepage hero (layouts/_partials/home/custom.html) --
+   Breaks out of Congo's `max-w-7xl` centered body to bleed full viewport
+   width; written as hand-rolled CSS rather than Tailwind utility classes
+   because this project doesn't rebuild Congo's Tailwind bundle, so
+   arbitrary new utility classes wouldn't have been compiled in. */
+.hero {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--color-green-contrast);
+  text-align: center;
+}
+
+.hero--placeholder {
+  background: linear-gradient(135deg, var(--color-green), var(--color-anthracite));
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 38, 36, 0.6); /* --color-anthracite, semi-transparent */
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 40rem;
+  padding: 2rem 1.5rem;
+}
+
+.hero__title {
+  color: var(--color-green-contrast);
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.hero__date {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  margin: 0.75rem 0 0;
+}
+
+.hero__countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.hero__countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4rem;
+}
+
+.hero__countdown-value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1;
+}
+
+.hero__countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.hero__cta {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background: var(--color-yellow);
+  color: var(--color-yellow-contrast);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.hero__cta:hover,
+.hero__cta:focus-visible {
+  background: var(--color-orange);
+  color: var(--color-orange-contrast);
+}

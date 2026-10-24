@@ -42,6 +42,14 @@ h6 {
    width; written as hand-rolled CSS rather than Tailwind utility classes
    because this project doesn't rebuild Congo's Tailwind bundle, so
    arbitrary new utility classes wouldn't have been compiled in. */
+
+/* `100vw` includes the vertical scrollbar's width, so the hero is slightly
+   wider than the page. Clip that sliver instead of showing a horizontal
+   scrollbar; `clip` (unlike `hidden`) keeps sticky headers working. */
+body {
+  overflow-x: clip;
+}
+
 .hero {
   position: relative;
   left: 50%;
